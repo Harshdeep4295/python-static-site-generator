@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 class Site:
-    def Site(self, source, dest):
+    def __init__(self, source, dest):
         self.source = Path(source)
         self.dest = Path(dest)
 
@@ -12,6 +12,6 @@ class Site:
 
     def build(self):
         self.dest.mkdir(parents=True, exist_ok=True)
-        for paths in self.source.glob("*"):
-            if paths.is_dir:
-                self.create_dir(path=paths)
+        for path in self.source.glob("*"):
+            if path.is_dir:
+                self.create_dir(path=path)
